@@ -16,6 +16,11 @@ class WatzapServiceProvider extends ServiceProvider
     $this->publishes([
       __DIR__ . '/config/watzap.php' => config_path('watzap.php'),
     ], ['watzap', 'watzap:config']);
+    if ($this->app->runningInConsole()) {
+      $this->commands([
+        \PhpWatzap\Commands\WatzapKeys::class,
+      ]);
+    }
   }
   /**
    * Make config publishment optional by merging the config from the package.
@@ -28,7 +33,7 @@ class WatzapServiceProvider extends ServiceProvider
       __DIR__ . '/config/watzap.php',
       'watzap'
     );
-    $this->app->bind('watzap', function() {
+    $this->app->bind('watzap', function () {
       return new WatZap(config('watzap.api-key'), config('watzap.base-url'), true);
     });
   }

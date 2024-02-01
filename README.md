@@ -47,6 +47,8 @@ $resultBody = $result->body;
 
 ## Laravel Usage
 
+run `php artisan watzap:keys` to get your whatsapp number key
+
 ```php
 use PhpWatzapp/Facade/Watzap;
 

@@ -19,6 +19,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class Watzap extends Facade {
   protected static function getFacadeAccessor() {
-      return 'watzap';
+    return 'watzap';
   }
 }
